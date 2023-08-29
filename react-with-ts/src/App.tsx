@@ -8,23 +8,23 @@ import { IProduct } from './models';
 import { Loader } from './components/Loader';
 import { ErrorMessage } from './components/ErrorMessage';
 import { useProducts } from './hooks/products';
+import { Modal } from './components/Modal';
+import { CreateProduct } from './components/CreateProduct';
+import { Route, Routes } from 'react-router-dom';
+import { AboutPage } from './pages/AboutPage';
+import { Navigation } from './components/Navigation';
+import { ProductsPage } from './pages/ProductsPage';
 
 function App() {
-    const {loading, error, products} = useProducts()
-  return (
-      <div className="container mx-auto max-w-2xl pt-5">
-          {
-              loading && <Loader/>
-          }
-          {
-              error && <ErrorMessage error={error}/>
-          }
-          {
-              products.map(product => <Product product={product}/>)
-          }
-
-      </div>
-  );
+	return (
+		<>
+			<Navigation />
+			<Routes>
+				<Route path="/" element={ <ProductsPage /> } />
+				<Route path="/about" element={ <AboutPage /> } />
+			</Routes>
+		</>
+	);
 }
 
 export default App;
