@@ -5,19 +5,20 @@ import { Product } from './components/Product';
 import { products } from './data/products';
 import axios from 'axios';
 import { IProduct } from './models';
+import { Loader } from './components/Loader';
+import { ErrorMessage } from './components/ErrorMessage';
+import { useProducts } from './hooks/products';
 
 function App() {
-    const [products, setProducts] = useState<IProduct[]>([]);
-
-    async function fetchProducts() {
-        const response = await axios.get<IProduct[]>('https://fakestoreapi.com/products?limit=5');
-        setProducts(response.data)
-    }
-    useEffect(() => {
-        fetchProducts()
-    }, [])
+    const {loading, error, products} = useProducts()
   return (
       <div className="container mx-auto max-w-2xl pt-5">
+          {
+              loading && <Loader/>
+          }
+          {
+              error && <ErrorMessage error={error}/>
+          }
           {
               products.map(product => <Product product={product}/>)
           }
