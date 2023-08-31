@@ -1,0 +1,23 @@
+{
+  "posts": [
+    {
+      "title": "123123",
+      "body": "123123",
+      "id": 16
+    },
+    {
+      "title": "dsfsdf",
+      "body": "dsfsdf",
+      "id": 17
+    },
+    {
+      "title": "sdfsdfsdf",
+      "body": "sdfsdfsdf",
+      "id": 18
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}
