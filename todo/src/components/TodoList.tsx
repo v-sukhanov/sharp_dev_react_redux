@@ -1,18 +1,13 @@
-import { ITodo } from '../models/todo';
 import { TodoItem } from './TodoItem';
+import { useAppSelector } from '../hooks/redux';
+import { useActions } from '../hooks/redux-actions';
 
-export interface ITodoList {
-	todos: ITodo[]
-	toggleTodo: (todoId: string) => void
-	removeTodo: (todoId: string) => void
+export const TodoList = () => {
+	const {todos} = useAppSelector(state => state.todos)
 
-}
-
-export const TodoList = ({ todos, toggleTodo, removeTodo }: ITodoList) => {
 	return <div className="py-8">
 		{
-			todos.map(todo => <TodoItem todo={todo} toggleTodo={toggleTodo} removeTodo={removeTodo}/>)
+			todos.map(todo => <TodoItem key={todo.id} todo={todo}/>)
 		}
-
 	</div>
 }

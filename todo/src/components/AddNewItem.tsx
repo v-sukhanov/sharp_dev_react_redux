@@ -1,14 +1,14 @@
 import { useState } from 'react';
+import { useActions } from '../hooks/redux-actions';
 
-export interface IAddNewItem {
-	addNewToDo: (item: string) => void
-}
 
-export const AddNewItem = ({addNewToDo}: IAddNewItem) => {
+
+export const AddNewItem = () => {
 	const [newItemName, setNewItemName] = useState('');
+	const {addTodo} = useActions()
 
 	const onAddNewTodo = () => {
-		addNewToDo(newItemName);
+		addTodo(newItemName);
 		setNewItemName('')
 	}
 	return <div>

@@ -1,16 +1,17 @@
 import { ITodo } from '../models/todo';
 import classNames from 'classnames';
+import { useActions } from '../hooks/redux-actions';
 
 export interface ITodoItem {
 	todo: ITodo;
-	toggleTodo: (todoId: string) => void
-	removeTodo: (todoId: string) => void
 }
 
 let uniqCheckboxId = 0
 
-export const TodoItem = ({ todo, toggleTodo, removeTodo }: ITodoItem) => {
+export const TodoItem = ({ todo }: ITodoItem) => {
 	uniqCheckboxId++;
+	const {removeTodo, toggleTodo} = useActions()
+
 	return <div
 		className={classNames("mb-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 ")}>
 		<div className="mb-3 text-gray-900  dark:text-gray-300">
